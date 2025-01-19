@@ -670,6 +670,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'debugpy',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -821,7 +822,7 @@ require('lazy').setup({
           -- <c-h> is similar, except moving you backwards.
           ['<C-l>'] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
+              lua.expand_or_jump()
             end
           end, { 'i', 's' }),
           ['<C-h>'] = cmp.mapping(function()
